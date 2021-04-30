@@ -68,25 +68,27 @@ application.delete('/api/notes/:id', (request, response) => {
     let dbData = fs.readFileSync(path.join(__dirname, '../db/db.json'));
     // parses the data into a array of objects
     let parsedDBData = JSON.parse(dbData);
-
+    // loop which matches the id the database to remove it
     for (let i = 0; i < parsedDBData.length; i++) {
+        // if the id of the object being iterated over matches the id of the delete
         if (parsedDBData[i].id == returnID) {
-            console.log(i);
+            // removes the item from the database
             parsedDBData.splice(i, 1);
         }
     };
-
+    // writes the array of objects to the database file
     fs.writeFile(path.join(__dirname, '../db/db.json'), JSON.stringify(parsedDBData), (e) => {
         if (e) {
             console.log('Something happened on save', e);
         }
     })
-
+    // returns a response back to the request
     response.end();
 })
-
+// wild card route, returns index.html to any route request that doesn't match above
 application.get('*', (request, response) => {
     response.sendFile(path.join(__dirname, '../public/index.html'));
 });
 
+// starts listening on port and activates the server
 application.listen(PORT, () => console.log(`Listning PORT: ${PORT}`));
