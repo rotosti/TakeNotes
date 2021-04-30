@@ -60,10 +60,10 @@ application.post('/api/notes', (request, response) => {
     // sends back a response saying processing ended
     response.end()
 })
-
+// delete route to delete from the database
 application.delete('/api/notes/:id', (request, response) => {
+    // takes the id out of the delete route request
     const returnID = request.params.id;
-    console.log(returnID);
 
     let dbData = fs.readFileSync(path.join(__dirname, '../db/db.json'));
     let parsedDBData = JSON.parse(dbData);
