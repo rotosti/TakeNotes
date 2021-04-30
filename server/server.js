@@ -64,8 +64,9 @@ application.post('/api/notes', (request, response) => {
 application.delete('/api/notes/:id', (request, response) => {
     // takes the id out of the delete route request
     const returnID = request.params.id;
-
+    // takes the database file and reads it
     let dbData = fs.readFileSync(path.join(__dirname, '../db/db.json'));
+    // parses the data into a array of objects
     let parsedDBData = JSON.parse(dbData);
 
     for (let i = 0; i < parsedDBData.length; i++) {
