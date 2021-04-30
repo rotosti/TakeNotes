@@ -1,6 +1,6 @@
 Author: Tomasz Siemion
 Project: Take Notes
-DEPLOY LINK:
+DEPLOY LINK: https://takesomenotes.herokuapp.com/notes
 
 # TakeNotes
 A simple note taking app with a file used as a database.
